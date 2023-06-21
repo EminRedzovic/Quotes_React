@@ -7,6 +7,7 @@ function QuoteDetails() {
   const params = useParams();
   console.log(params);
   const [quote, SetQuote] = useState([]);
+  const [isLoading, SetIsLoading] = useState([true]);
   let getQuotes = () => {
     fetch(
       "https://js-course-server.onrender.com/quotes/get-quote/" + params.id + ""
@@ -18,11 +19,28 @@ function QuoteDetails() {
       })
       .catch((error) => {
         console.log(error);
+      })
+      .finally(() => {
+        SetIsLoading(false);
       });
   };
   useEffect(() => {
     getQuotes();
   }, []);
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <div className="all-quotes">
       <div className="card">
@@ -31,6 +49,9 @@ function QuoteDetails() {
         </p>
         <p>
           Quote Text: <span>{quote.quoteText}</span>
+        </p>
+        <p>
+          Quote Source: <span>{quote.quoteSource}</span>
         </p>
         <p>
           Likes: <span>{quote.likes}</span>

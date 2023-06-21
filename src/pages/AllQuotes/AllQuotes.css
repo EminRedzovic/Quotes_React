@@ -1,9 +1,23 @@
 .all-quotes {
   display: flex;
-  height: 100vh;
-  background-color: aquamarine;
+  height: auto;
+  flex-direction: column;
+  /* background-color: aquamarine; */
   justify-content: center;
   align-items: center;
+}
+.add-quote,
+.favorites {
+  padding: 10px;
+  border-radius: 10px;
+  border: 0.5px solid black;
+}
+.favorites-div {
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 .card {
   margin-top: 35px;
@@ -54,4 +68,7 @@ span {
 }
 .edit div {
   width: 100%;
+}
+.div {
+  margin: 50px;
 }
